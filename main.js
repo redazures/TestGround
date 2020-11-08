@@ -64,6 +64,7 @@ l1 = [9,9,9,9,9,9,9], l2 = [9,9,9,9]
 // l1 = [2,4,3], l2 = [5,6,4]
 // l1 = [0], l2 = [0]
 // addTwoNumbers(l1,l2)
+//need to fix this for leetcode, not transferring 
 console.log(addTwoNumbers(l1,l2))
 
 // printSquare(4)
