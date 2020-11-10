@@ -21,13 +21,22 @@ var lengthOfLongestSubstring = function(s) {
 
 // lengthOfLongestSubstring(s)
 
-var isPalindrome = function(x) {
-  // if (x<0){return false}
-  // if (x%10===0 && x!==0){return false}
-  if (x === parseInt(x.toString().split('').reverse().join(''))){return true}else{
-    return false
-  }
+var longestCommonPrefix = function(strs) {
+  
+    for(let i = 0;i<strs[0].length;i++){
+      console.log(strs[0][i]!==strs[1][i],strs[0][i]!==strs[2][i],i,strs[1],i)
+      if(strs[0][i]===strs[1][i] && strs[0][i]===strs[2][i]){
+        console.log("loop")
+        continue
+        // console.log(strs[0][i]!==strs[1][i],strs[0][i]!==strs[2][i],i,strs[1],i)
+      }
+      else {
+        return strs[0].slice(0,i) 
+      }
+      
+    } 
 };
-let x = 105
 
-console.log(isPalindrome(x))
+// strs = ["flower","flow","flight"]
+strs = ["dog","doog","doooog"]
+console.log(longestCommonPrefix (strs))
