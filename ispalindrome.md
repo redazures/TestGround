@@ -5,3 +5,5 @@ if (x === parseInt(x.toString().split('').reverse().join(''))){return true}else{
 return false
 }
 };
+
+/added new palindrome function
