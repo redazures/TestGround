@@ -43,3 +43,4 @@ gunit.addEdge("d","f")
 gunit.addEdge("e","f")
 
 console.log(gunit)
+//testing areas to try
