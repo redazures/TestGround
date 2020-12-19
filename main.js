@@ -38,4 +38,4 @@ gunit.addEdge("Jimbo","Vinnie")
 gunit.addEdge("Iroh","Vinnie")
 gunit.addEdge("Kevin","Victor")
 gunit.deleteVertex("Jimbo")
-console.log(gunit)
+console.log(gunit) //testing
