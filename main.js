@@ -2,26 +2,18 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('works for me')
 })
 
-function minSubArrayLen(arr,n){
-    var total = 0
+function findLongestSubstring(arr){
+    // add whatever parameters you deem necessary - good luck!
+    let longest = 0
+    let counter={}
     let start = 0
-    let end = 0
-    let length = Infinity
-    while (start<arr.length){
-        console.log(total, start, end, length)
-        if (total<n && end<arr.length){
-            total+=arr[end]
-            end++
-        }else if(total>=n){
-            length=Math.min(length,end-start)
-            total-=arr[start]
-            start++
-        }else{
-            break
-        }
+    for(let i=0;i<arr.length;i++){
+        let current=arr[i]
+        if (counter[current)) {start=0}
+        longest+="a"
+        start+="a"
     }
-    return length ===Infinity ? 0 :length
+    return start, longest
 }
-//redo problem
 
-console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10,14],95))
+console.log(findLongestSubstring("thisisawesome"))
