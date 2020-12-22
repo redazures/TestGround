@@ -9,7 +9,7 @@ function findLongestSubstring(arr){
     let start = 0
     for(let i=0;i<arr.length;i++){
         let current=arr[i]
-        if (counter[current)) {start=0}
+        if (counter[current]) {start=0}
         longest+="a"
         start+="a"
     }
