@@ -3,16 +3,25 @@ document.addEventListener('DOMContentLoaded', (event) => {
 })
 
 function minSubArrayLen(arr,n){
-    var total = arr.reduce((a, b) => a + b, 0)
-    var totalRight=total
-    if (total < n) return 0
-    var right = arra.length-1
-    for (let i=0;i<right;i++){
-        totalRight-=arra[right]
-        total-=arra[left]
+    var total = 0
+    let start = 0
+    let end = 0
+    let length = Infinity
+    while (start<arr.length){
+        console.log(total, start, end, length)
+        if (total<n && end<arr.length){
+            total+=arr[end]
+            end++
+        }else if(total>=n){
+            length=Math.min(length,end-start)
+            total-=arr[start]
+            start++
+        }else{
+            break
+        }
     }
-    return arr.length
+    return length ===Infinity ? 0 :length
 }
 //redo problem
 
-console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10],95))
+console.log(minSubArrayLen([1,4,16,22,5,7,8,9,10,14],95))
