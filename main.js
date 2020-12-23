@@ -2,43 +2,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('works for me')
 })
 
-var findMedianSortedArrays = function(nums1, nums2) {
-    let length =Math.ceil(nums1.length+nums2.length)
-    length%2===0 ? length++ : length
-    let ara = []
-    let second = 0
-    for(let i =0;i<length;i++){
-           if(nums1[i]<=nums2[second]){
-            ara.push(nums1[i])
-        }else if(nums1[i]>nums2[second]){
-            ara.push(nums2[second])
-            second++
-            i--
+var isValid = function(s) {
+    let key ={"(":0,"[":0,"{":0}
+    let queue = []
+    for(let i=0;i<s.length;i++){
+        console.log(key[s[i]],s[i   ],queue[0])
+
+        if(s[i]==="("||s[i]==="["||s[i]==="{") {
+            key[s[i]]++
+            queue.push(s[i])
         }
+        if(s[i]===")" && queue[0]==="(") {
+            key["("]--
+            queue.shift()
+            console.log("hit")
+        }
+        if(s[i]==="}" && queue[0]==="{") {
+            key["{"]--
+            queue.shift()
+            console.log("hit")
+        }
+        // console.log(s[i]==="]",queue[0]==="[")
+        if(s[i]==="]" && queue[0]==="[") {
+            key["["]--
+            queue.shift()
+            console.log("hit")
+        }
+        console.log(key,queue)
     }
-    return ara[ara.length-1]
+    for (var k in key){
+        if (key[k]>0) return false
+        console.log(queue.length)
+    }
+    return true
 };
 
-var findMedianSortedArrays = function(nums1, nums2) {
-    let total = (nums1.length+nums2.length)
-    let length = Math.ceil(total/2)
-    total%2===0 ? length++ : length
-    let ara = []
-    let second = 0
-    let first = 0 
-    for(let i =0;i<length;i++){
-        console.log(nums1[first],nums2[second],nums1[first]<=nums2[second],!nums2[second], first,second)
-        if(nums1[first]<=nums2[second] || !nums2[second] && nums2[second] !== 0 ){
-            ara.push(nums1[first])
-            first++
-            console.log("me")
-        }else if(nums1[first]>nums2[second] || !nums1[first]){
-            ara.push(nums2[second])
-            second++
-        }
-        console.log(ara)   
-    }
-    return total%2===0 ? ((ara[ara.length-2]+ara[ara.length-1])/2) : ara[ara.length-1]
-};
-
-console.log(findMedianSortedArrays([0,0],[0,0]))
+console.log(isValid("([])"))
