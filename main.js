@@ -45,3 +45,5 @@ function solve(s0, s1) {
 }
 
 console.log(solve("abc","bcabxabc"))
+
+//not sure if this folder is even needed if I am using leetcode to keep tract of my answers
