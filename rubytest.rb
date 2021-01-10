@@ -29,3 +29,5 @@ while i < largest  do
 end
 
 puts prime
+
+#using ruby to solve  a prime number
