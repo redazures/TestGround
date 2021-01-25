@@ -2,52 +2,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('works for me')
 })
 
-class Node{
-    constructor(value){
-        this.value = value;
-        this.left = null;
-        this.right = null;
+function mystery(input) {
+    // The input will be an array of strings
+    let index = 0
+    let flag = false
+    while ( index < input.length ) {
+        var word = input[index]
+        input.forEach(thisWord => {
+            flag = flag || thisWord === word
+            console.log(flag)
+        })
+        index++
+        // console.log("flag", flag)
     }
+    return flag
+
 }
 
-class BinarySearchTree{
-    constructor(){
-        this.root=null
-    }
-
-    insert(value){
-        var newNode = new Node(value)
-        if(this.root===null){
-            this.root=newNode
-            return this
-        }
-        var current = this.root
-        while(true){
-            if(value===current.value)return undefined
-            if(value<current.value){
-                if(current.left===null){
-                    current.left=newNode
-                    return this
-                }
-                current=current.left
-            }else{
-                if(current.right===null){
-                    current.right=newNode
-                    return this
-                }
-                current=current.right
-            }
-        }
-    }
-}
-
-var tree = new BinarySearchTree()
-tree.insert(10)
-tree.insert(5)
-tree.insert(13)
-tree.insert(7)
-tree.insert(11)
-tree.insert(2)
-tree.insert(16)
-tree.insert(23)
-console.log(tree)
+console.log(mystery(["string1", "string1", "worde"]))
