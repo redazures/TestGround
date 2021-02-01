@@ -17,7 +17,10 @@ class BinarySearchTree{
 
     add(value){
         var newNode = new Node
-        
+        if(this.root===null) {
+            this.root=newNode
+            return newNode
+        }
     }
 }
 
