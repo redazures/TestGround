@@ -19,4 +19,4 @@ function mystery(input) {
 
 }
 
-console.log(mystery(["string1", "string1", "worde"]))
+// console.log(mystery(["string1", "string1", "worde"]))
