@@ -39,6 +39,39 @@ class BinarySearchTree{
             }
         }
     }
+
+    find(val){
+        if(this.root===null) return false
+        var current = this.root,
+        found = false
+        while(current && !found){
+            if(val<current.val){
+                current=current.left
+            } else if(val>current.val){
+                current=current.right
+            }else{
+                found =true
+            }
+        }
+        if(!found) return undefined
+        return current
+    }
+    BFS(){
+        var node = this.root,
+        data=[],
+        queue=[]
+        queue.push(node)
+
+        while(queue.length){
+            // console.log(queue)
+            node=queue.shift()
+            data.push(node.val)
+            console.log(data)
+            if(node.left) queue.push(node.left)
+            if(node.right) queue.push(node.right)
+        }
+        return data
+    }
 }
 
 var tree = new BinarySearchTree()
@@ -50,4 +83,6 @@ tree.add(11)
 tree.add(2)
 tree.add(16)
 tree.add(23)
+console.log(tree.find(5))
 console.log(tree)
+console.log(tree.BFS())
