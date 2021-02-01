@@ -16,27 +16,8 @@ class BinarySearchTree{
     }
 
     add(value){
-        var newNode = new Node(value)
-        if(this.root===null) {
-            this.root = newNode
-        }
-        var current = this.root
-        while(true){
-            if(current.value==value)return undefined
-            if(value<current.value){
-                if(current.left===null){
-                    current.left=newNode
-                    return this
-                }
-                current=current.left
-            }else{
-                if(current.right==null){
-                    current.right=newNode
-                    return this
-                }
-                current=current.right
-            }
-        }
+        var newNode = new Node
+        
     }
 }
 
