@@ -2,61 +2,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('works for me')
 })
 
-function solution(S) {
-    if(S.length<2)return -1
-
-    checkBalance = (string)=>{
-        let key={}
-        for(let i=0;i<string.length;i++){
-            const letter = string[i]
-            if(letter===letter.toLowerCase()){
-                if(!key[letter] && key[letter.toUpperCase()]!==0)key[letter.toUpperCase()]=1
-                key[letter.toLowerCase()]=0
-            }
-            else if(letter===letter.toUpperCase()){
-                if(!key[letter] && key[letter.toLowerCase()]!==0)key[letter.toLowerCase()]=1
-                key[letter.toUpperCase()]=0
-            }
-        }
-        
-        for(let letter in key){
-            if(key[letter]>0) return false
-        }
-        return true
-    }
-
-    let shortestLength=S.length+1, string =""
+function solution(wordlist,keypads) {
+    if(!keypads || keypads.length<1 || wordlist.length<1 || !wordlist) return 0
     
-    for(let i =0;i<S.length-1;i++){
-        for(let j=S.length;j>i;j--){
-            const testString=S.substring(i,j)
-            if (checkBalance(testString)){
-                if(testString.length<shortestLength){
-                    shortestLength = testString.length 
-                    string=testString
+    let keys = []
+    keypads.forEach(key=>{
+        let count  = 0
+        const keySet = new Set(key)
+        const firstLetter=key[0]
+        for(let i =0;i<wordlist.length;i++){
+            count++
+            for(let j=0;j<wordlist[i].length;j++){
+                if(!keySet.has(wordlist[i][j])){
+                    count--
+                    break
                 }
             }
         }
+        keys.push(count)
+    })
+
+    for(let i =0;i<wordlist.length;i++){
+        for(let j=0;j<wordlist[i].length;j++){
+            wordlist[i][j]
+        }
     }
-
-    // return checkValid(S)
-    //the ahove will check if the string is valid, 
-    //we need to make smaller strings and see if they are valid, if string is valid, then return string. 
-    return string ? string.length : -1
-
+    // console.log(keys)
+    return keys
 }
 
-// function solution(S, K) {
-//     // write your code in JavaScript (Node.js 8.9.4)
-//     const days = ["Mon","Tues","Wed","Thu","Fri","Sat","Sun","Mon","Tues","Wed","Thu","Fri","Sat","Sun"]
-//     const stub = K%7
-//     for(let i=0;i<days.length-1;i++){
-//         if(days[i]===S)return days[stub+i]
-//     }
-// }
+wordlist= ['APPLE', 'PLEAS', 'PLEASE']
+keypads = ['AELWXYZ','AELPXYZ','AELPSXY','SAELPRT','XAEBSKY']
 
-console.log(solution("aA"))
-console.log(solution("azABaabza"))
-console.log(solution("TacoCat"))
-console.log(solution("AcZCbaBz"))
-console.log(solution("abcdefghijklmnopqrstuvwxyz"))
+console.log(solution(wordlist,keypads))
+
+// console.log(solution("azABaabza")) //5 
+// console.log(solution("TacoCat")) //-1 
+// console.log(solution("AcZCbaBz")) //8
+// console.log(solution("abcdefghijklmnopqrstuvwxyz")) //-1
