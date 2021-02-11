@@ -2,41 +2,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
     console.log('works for me')
 })
 
-function solution(wordlist,keypads) {
-    if(!keypads || keypads.length<1 || wordlist.length<1 || !wordlist) return 0
+function solution(wordList,keyPads) {
+    if(!keyPads || keyPads.length<1 || wordList.length<1 || !wordList) return 0
     
-    let keys = []
-    keypads.forEach(key=>{
+    let results = []
+    keyPads.forEach(key=>{
         let count  = 0
         const keySet = new Set(key)
         const firstLetter=key[0]
-        for(let i =0;i<wordlist.length;i++){
-            if(wordlist[i].includes(firstLetter)){
+        for(let i =0;i<wordList.length;i++){
+            if(wordList[i].includes(firstLetter)){
                 count++
-                for(let j=0;j<wordlist[i].length;j++){
-                    if(!keySet.has(wordlist[i][j])){
+                for(let j=0;j<wordList[i].length;j++){
+                    if(!keySet.has(wordList[i][j])){
                         count--
                         break
                     }
                 }
             }
         }
-        keys.push(count)
+        results.push(count)
     })
 
-    for(let i =0;i<wordlist.length;i++){
-        for(let j=0;j<wordlist[i].length;j++){
-            wordlist[i][j]
-        }
-    }
-    // console.log(keys)
-    return keys
+    return results
 }
 
-wordlist= ['APPLE', 'PLEAS', 'PLEASE']
-keypads = ['AELWXYZ','AELPXYZ','AELPSXY','SAELPRT','XAEBSKY']
+wordList= ['APPLEAPPLEAPPLE', 'PLEAS', 'PLEASE']
+keyPads = ['AELWXYZ','AELPXYZ','AELPSXY','SAELPRT','XAEBSKY']
 
-console.log(solution(wordlist,keypads))
+console.log(solution(wordList,keyPads))
 
 // console.log(solution("azABaabza")) //5 
 // console.log(solution("TacoCat")) //-1 
