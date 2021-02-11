@@ -11,11 +11,13 @@ function solution(wordlist,keypads) {
         const keySet = new Set(key)
         const firstLetter=key[0]
         for(let i =0;i<wordlist.length;i++){
-            count++
-            for(let j=0;j<wordlist[i].length;j++){
-                if(!keySet.has(wordlist[i][j])){
-                    count--
-                    break
+            if(wordlist[i].includes(firstLetter)){
+                count++
+                for(let j=0;j<wordlist[i].length;j++){
+                    if(!keySet.has(wordlist[i][j])){
+                        count--
+                        break
+                    }
                 }
             }
         }
