@@ -5,16 +5,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
 function solution(wordList,keyPads) {
     if(!keyPads || keyPads.length<1 || wordList.length<1 || !wordList) return 0
     
+    wordSets=[]
+    wordList.forEach(word=>{
+        newSetWord = new Set(word)
+        wordSets.push(newSetWord)
+    })
+    
     let results = []
     keyPads.forEach(key=>{
         let count  = 0
-        const keySet = new Set(key)
         const firstLetter=key[0]
-        for(let i =0;i<wordList.length;i++){
-            if(wordList[i].includes(firstLetter)){
+        for(let word of wordSets){
+            if(word.has(firstLetter)){
                 count++
-                for(let j=0;j<wordList[i].length;j++){
-                    if(!keySet.has(wordList[i][j])){
+                for(let letter of word){
+                    if(!key.includes(letter)){
                         count--
                         break
                     }
@@ -23,8 +28,26 @@ function solution(wordList,keyPads) {
         }
         results.push(count)
     })
-
     return results
+    
+    // let results = []
+    // keyPads.forEach(key=>{
+    //     let count  = 0
+    //     const firstLetter=key[0]
+    //     for(let i =0;i<wordList.length;i++){
+    //         if(wordList[i].includes(firstLetter)){
+    //             count++
+    //             for(let j=0;j<wordList[i].length;j++){
+    //                 if(!key.includes(wordList[i][j])){
+    //                     count--
+    //                     break
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     results.push(count)
+    // })
+    // return results
 }
 
 wordList= ['APPLEAPPLEAPPLE', 'PLEAS', 'PLEASE']
