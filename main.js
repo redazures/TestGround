@@ -30,4 +30,4 @@ function solution(wordList,keyPads) {
 wordList= ['APPLEAPPLEAPPLE', 'PLEAS', 'PLEASE']
 keyPads = ['AELWXYZ','AELPXYZ','AELPSXY','SAELPRT','XAEBSKY']
 
-console.log(solution(wordList,keyPads)) //  gets 8 cases 
+console.log(solution(wordList,keyPads)) //  gets 8 cases, but not enough
